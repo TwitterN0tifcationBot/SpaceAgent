@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeHelperAI - Ask the Agent</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background-color: #4CAF50; color: white; padding: 10px 0; text-align: center; }
+        #chat-container { padding: 20px; max-width: 600px; margin: 0 auto; }
+        #chat-box { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; margin-bottom: 10px; }
+        .message { margin: 5px 0; }
+        .user { color: blue; }
+        .agent { color: green; }
+        #input-container { display: flex; }
+        #user-input { flex: 1; padding: 10px; }
+        #send-button { padding: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        #premium-toggle { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ask CodeHelperAI</h1>
+    </header>
+    <div id="chat-container">
+        <div id="premium-toggle">
+            <label>
+                <input type="checkbox" id="premium-checkbox" />
+                Enable Premium Features
+            </label>
+        </div>
+        <div id="chat-box"></div>
+        <div id="input-container">
+            <input type="text" id="user-input" placeholder="Type your question here..." />
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const premiumCheckbox = document.getElementById('premium-checkbox');
+
+        sendButton.addEventListener('click', () => {
+            const userMessage = userInput.value.trim();
+            if (userMessage) {
+                addMessage('user', userMessage);
+                userInput.value = '';
+                // Simulate agent response
+                setTimeout(() => {
+                    const agentResponse = getAgentResponse(userMessage, premiumCheckbox.checked);
+                    addMessage('agent', agentResponse);
+                }, 1000);
+            }
+        });
+
+        function addMessage(sender, message) {
+            const messageElement = document.createElement('div');
+            messageElement.className = `message ${sender}`;
+            messageElement.textContent = `${sender === 'user' ? 'You' : 'Agent'}: ${message}`;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function getAgentResponse(userMessage, isPremium) {
+            // Placeholder for AI model integration
+            // Replace this with actual API call to the AI model
+            if (isPremium) {
+                return "This is a premium response from the AI agent.";
+            } else {
+                return "This is a standard response from the AI agent.";
+            }
+        }
+    </script>
+</body>
+</html>
