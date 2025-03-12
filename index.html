@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeHelperAI - Home</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background-color: #4CAF50; color: white; padding: 10px 0; text-align: center; }
+        section { padding: 20px; }
+        .feature, .premium, .languages, .ai-models { margin-bottom: 20px; }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to CodeHelperAI</h1>
+    </header>
+    <section>
+        <div class="feature">
+            <h2>Features</h2>
+            <ul id="features-list"></ul>
+        </div>
+        <div class="premium">
+            <h2>Premium Options</h2>
+            <p>Upgrade to access the latest AI models and exclusive features.</p>
+        </div>
+        <div class="languages">
+            <h2>Supported Coding Languages</h2>
+            <ul id="languages-list"></ul>
+        </div>
+        <div class="ai-models">
+            <h2>AI Models</h2>
+            <ul>
+                <li>Normal Version: GPT-4-mini</li>
+                <li>Premium Version: The Recent</li>
+            </ul>
+        </div>
+    </section>
+    <script>
+        // JSONC Configuration
+        const config = {
+            "features": ["Code Generation", "Debugging Help", "Explanations"],
+            "languages_supported": ["Python", "JavaScript", "Java", "C++"]
+        };
+
+        // Populate Features
+        const featuresList = document.getElementById('features-list');
+        config.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.textContent = feature;
+            featuresList.appendChild(li);
+        });
+
+        // Populate Supported Languages
+        const languagesList = document.getElementById('languages-list');
+        config.languages_supported.forEach(language => {
+            const li = document.createElement('li');
+            li.textContent = language;
+            languagesList.appendChild(li);
+        });
+    </script>
+</body>
+</html>
